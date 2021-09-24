@@ -128,6 +128,19 @@ dataset_base = Config({
     'label_map': None
 })
 
+my_custom_dataset = dataset_base.copy({
+    'name': 'My Dataset',
+
+    'train_images': '/content/drive/MyDrive/dataset/train',
+    'train_info':   '/content/drive/MyDrive/dataset/annotations/drive_train_coco.json',
+
+    'valid_images': '/content/drive/MyDrive/dataset/val',
+    'valid_info':   '/content/drive/MyDrive/dataset/annotations/drive_val_coco.json',
+
+    'has_gt': True,
+    'class_names': ('car', 'truck', 'bus')
+})
+
 coco2014_dataset = dataset_base.copy({
     'name': 'COCO 2014',
     
@@ -657,8 +670,8 @@ yolact_base_config = coco_base_config.copy({
     'name': 'yolact_base',
 
     # Dataset stuff
-    'dataset': coco2017_dataset,
-    'num_classes': len(coco2017_dataset.class_names) + 1,
+    'dataset': my_custom_dataset,
+    'num_classes': len(my_custom_dataset.class_names) + 1,
 
     # Image Size
     'max_size': 550,
@@ -768,7 +781,6 @@ yolact_resnet50_pascal_config = yolact_resnet50_config.copy({
 })
 
 # ----------------------- YOLACT++ CONFIGS ----------------------- #
-
 yolact_plus_base_config = yolact_base_config.copy({
     'name': 'yolact_plus_base',
 

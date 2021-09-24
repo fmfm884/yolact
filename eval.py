@@ -709,7 +709,7 @@ def evalvideo(net:Yolact, path:str, out_path:str=None):
     def prep_frame(inp, fps_str):
         with torch.no_grad():
             frame, preds = inp
-            return prep_display(preds, frame, None, None, undo_transform=False, class_color=True, fps_str=fps_str)
+            return prep_display(preds, frame, None, None, undo_transform=False, class_color=False, fps_str=fps_str)
 
     frame_buffer = Queue()
     video_fps = 0
