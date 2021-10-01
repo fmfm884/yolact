@@ -30,6 +30,7 @@ def str2bool(v):
 
 parser = argparse.ArgumentParser(
     description='Yolact Training Script')
+parser.add_argument('--log', default=True)
 parser.add_argument('--batch_size', default=8, type=int,
                     help='Batch size for training')
 parser.add_argument('--resume', default=None, type=str,
@@ -354,6 +355,7 @@ def train():
                 iteration += 1
 
                 if iteration % args.save_interval == 0 and iteration != args.start_iter:
+                #if iteration % ###
                     if args.keep_latest:
                         latest = SavePath.get_latest(args.save_folder, cfg.name)
 
